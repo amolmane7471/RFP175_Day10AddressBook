@@ -10,7 +10,7 @@ public class AddressBookMain {
 		int choice; 
 		do
 		{
-			System.out.println("Enter a choice : \n 1.AddContact \n 2.DisplayContact \n 3.Exit");	
+			System.out.println("Enter a choice : \n 1.Add Contact \n 2.Display Contact \n 3.Edit Contact \n 4.Exit");	
 			choice = sc.nextInt();
 		switch(choice) {
 		case 1:
@@ -19,10 +19,13 @@ public class AddressBookMain {
 		case 2:
 			addressbook.displayContact();
 			break;
+		case 3:
+			addressbook.editContact();
+			break;
 		default :
 			System.out.println("enter valid choice");
 		}
-		}while(choice != 3);
+		}while(choice != 4);
 	}
 
 }
