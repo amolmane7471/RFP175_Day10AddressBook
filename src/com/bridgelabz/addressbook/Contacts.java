@@ -1,6 +1,6 @@
 package com.bridgelabz.addressbook;
 
-public class Contact {
+public class Contacts {
 private String firstName;
 private String lastName;
 private String address;
@@ -61,7 +61,7 @@ public void setZipCode(String zipCode) {
 
 @Override
 public String toString() {
-	return "Contact\n ["
+	return "\n Contact : \n"
 			+ "firstName = " + firstName + "\n"
 			+ "lastName = " + lastName + "\n"
 			+ "address = " + address + "\n"
@@ -69,7 +69,7 @@ public String toString() {
 			+ "state = " + state + "\n"
 			+ "email = " + email + "\n"
 			+ "phoneNo = " + phoneNo + "\n"
-			+ "zipCode = " + zipCode + "]";
+			+ "zipCode = " + zipCode + "\n" ;
 	}
 
 }
