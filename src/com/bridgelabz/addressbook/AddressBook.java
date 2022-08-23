@@ -1,12 +1,14 @@
 package com.bridgelabz.addressbook;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AddressBook {
 	Scanner sc = new Scanner(System.in);
-	Contacts contact = new Contacts();
+	ArrayList<Contacts> contactList = new ArrayList<>();
+	
 	public void addContact()
 	{
-		
+		Contacts contact = new Contacts();	
 		System.out.println("Enter first name");
 		contact.setFirstName(sc.next());
 		System.out.println("Enter last name");
@@ -23,16 +25,29 @@ public class AddressBook {
 		contact.setPhoneNo(sc.next());
 		System.out.println("Enter zip code");
 		contact.setZipCode(sc.next());
+		contactList.add( contact);
 	}
 
 	public void displayContact()
 	{
+	for (int i =0 ; i < contactList.size() ; i++)
+	{
+	Contacts contact = contactList.get(i); 
 	System.out.println(contact.toString());
+	}
 	}
 	
 	public void editContact()
 	{
-		 System.out.println("Enter choise to edit :\n 1.firstName \n 2.lastName \n 3.address \n 4.city \n 5.state  \n 6.zip \n 7.phoneNo \n 8.email ");
+		System.out.println("Enter Name Of Person To Edit Contact Details \n");
+		String name = sc.next();
+		boolean isAvailable = false;
+	    for(Contacts contact : contactList)
+	    {
+	    if (name.equals(contact.getFirstName())) 
+		{	
+	    	isAvailable = true;
+			System.out.println("Enter choise to edit :\n 1.firstName \n 2.lastName \n 3.address \n 4.city \n 5.state  \n 6.zip \n 7.phoneNo \n 8.email ");
 	       	int choise = sc.nextInt();
 		    switch (choise) {
 		           	case 1: 
@@ -75,8 +90,35 @@ public class AddressBook {
 			                 String email = sc.next();
 			                 contact.setEmail(email);
 			                 break;
-			           
-		           	}
-
+	       	           	}
 				}
+	    	}
+	    if(isAvailable == false)
+	    {
+	    	System.out.println("contact doesn't exist");
+	    }
+	}
+	
+	public void deleteContact()
+	   {		  
+		System.out.println("Enter the name of the Person to Delete the contact details");
+	    String name = sc.next();
+	    boolean isAvailable = false;
+	    for(Contacts contact : contactList)
+	    {
+	    if (name.equals(contact.getFirstName())) 
+		{	
+	    	isAvailable = true;
+			contactList.remove(contact);
+			System.out.println("Deleted Successfully!");
+			break;
+		}
+	    }
+	    if(isAvailable == false)
+	    {
+	    	System.out.println("contact doesn't exist");
+	    }
+	   }
+
 }
+
